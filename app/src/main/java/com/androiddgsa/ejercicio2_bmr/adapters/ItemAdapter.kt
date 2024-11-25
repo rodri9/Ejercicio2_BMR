@@ -8,10 +8,11 @@ import com.androiddgsa.ejercicio2_bmr.databinding.ItemLayoutBinding
 import com.bumptech.glide.Glide
 import android.icu.text.SimpleDateFormat
 import java.util.Locale
+import com.androiddgsa.ejercicio2_bmr.R
 
 class ItemAdapter(
     private val itemList: List<ItemsViewModel>,
-    // private val onItemClick: (ItemsViewModel) -> Unit
+    private val onItemClick: (ItemsViewModel) -> Unit
 ) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,6 +24,10 @@ class ItemAdapter(
         val item = itemList[position]
 
         holder.bind(item)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(item)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -42,6 +47,8 @@ class ItemAdapter(
             binding.tvFechaC.text = newDate
             Glide.with(binding.root.context)
                 .load(item.imagen)
+                .placeholder(R.drawable.no_image_available)
+                .error(R.drawable.no_image_available)
                 .into(binding.ivPersonaje)
         }
     }

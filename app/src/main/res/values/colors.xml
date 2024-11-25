@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="bc_color">#746BAB</color>
+    <color name="bc_details">#5E5BBB</color>
     <color name="info_bc">#5E5BBB</color>
     <color name="card_bc">#f7f2fa</color>
 </resources>

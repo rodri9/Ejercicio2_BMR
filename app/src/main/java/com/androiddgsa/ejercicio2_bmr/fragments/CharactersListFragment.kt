@@ -1,10 +1,12 @@
 package com.androiddgsa.ejercicio2_bmr.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androiddgsa.ejercicio2_bmr.MainActivity
 import com.androiddgsa.ejercicio2_bmr.R
@@ -58,8 +60,17 @@ class CharactersListFragment : Fragment() {
 
                     binding.apply {
                         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
-                        recyclerView.adapter = ItemAdapter(charactersList)
+                        recyclerView.adapter = ItemAdapter(charactersList) { character ->
+                            character.id?.let { id ->
+                                requireActivity().supportFragmentManager.beginTransaction()
+                                    .replace(R.id.fragmentContainer, CharacterDetailsFragment.newInstance(id))
+                                    .addToBackStack(null)
+                                    .commit()
+                            }
+                        }
                     }
+                }else {
+                    Log.e(Constants.LOGTAG, "Error: ${response.body()}")
                 }
             }
 
@@ -68,10 +79,9 @@ class CharactersListFragment : Fragment() {
                 p1: Throwable
             ) {
                 binding.pbLoading.visibility = View.INVISIBLE
+                Toast.makeText(requireContext(), getString(R.string.sin_conexi_n_favor_de_reintentar), Toast.LENGTH_LONG).show()
             }
-
         })
-
     }
 
     override fun onDestroy() {
