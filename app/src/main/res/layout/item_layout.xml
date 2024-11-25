@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="10dp"
+    android:background="@color/card_bc"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
+            android:layout_weight="0.7">
+            <TextView
+                android:id="@+id/tv_NombreP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/nombre_personaje"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp" />
+            <TextView
+                android:id="@+id/tv_FechaC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/fecha_creacion"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_Personaje"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/imagen_de_un_personaje" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
