@@ -10,5 +10,5 @@ data class CharacterDetails(
     @SerializedName("imageUrl")
     val imagen: String,
     @SerializedName("films")
-    val peliculas: String
+    val peliculas: List<String>
 )

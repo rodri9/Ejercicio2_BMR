@@ -55,6 +55,7 @@ class CharactersListFragment : Fragment() {
                 binding.pbLoading.visibility = View.INVISIBLE
 
                 if (response.isSuccessful) {
+
                     val apiResponse = response.body()
                     val charactersList = apiResponse?.data ?: mutableListOf()
 
